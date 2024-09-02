@@ -10,5 +10,18 @@ export default defineConfig({
     typecheck: {
       tsconfig: "./tsconfig.test.json",
     },
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      exclude: ["node_modules/", "**/*.d.ts", "src/test/setup.ts", "vite.config.ts"],
+      include: ["src/**/*.{js,jsx,ts,tsx}"],
+      all: true,
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
+    },
   },
 });
