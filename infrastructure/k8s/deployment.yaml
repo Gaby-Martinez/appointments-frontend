@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointments-frontend
+  namespace: appointments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appointments-frontend
+  template:
+    metadata:
+      labels:
+        app: appointments-frontend
+    spec:
+      containers:
+        - name: appointments-frontend
+          image: appointments-frontend:${TAG}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4173
+          # env:
+          #   - name: VITE_API_URL
+          #     value: "http://appointments-backend"
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.2"
+              memory: "256Mi"
