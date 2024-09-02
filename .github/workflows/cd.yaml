@@ -23,10 +23,10 @@ jobs:
 
       - name: Deploy to Minikube
         run: |
-          sed -i 's|appointments-frontend:${TAG}|appointments-frontend:${{ github.ref_name }}|' k8s/deployment.yaml
+          sed -i 's|appointments-frontend:${TAG}|appointments-frontend:${{ github.ref_name }}|' infrastructure/k8s/deployment.yaml
           kubectl create namespace appointments || true
-          kubectl apply -f k8s/deployment.yaml -n appointments
-          kubectl apply -f k8s/service.yaml -n appointments
+          kubectl apply -f infrastructure/k8s/deployment.yaml -n appointments
+          kubectl apply -f infrastructure/k8s/service.yaml -n appointments
           kubectl rollout status deployment/appointments-frontend -n appointments
 
       - name: Verify Deployment
