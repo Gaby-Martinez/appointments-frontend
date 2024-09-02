@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules
+npm-debug.log
+
+# Version control
+.git
+.gitignore
+
+# CI/CD and development tools
+.github
+.husky
+.vscode
+
+# Test files
+__tests__
+*.test.ts
+*.test.tsx
+coverage
+
+# Build output
+dist
